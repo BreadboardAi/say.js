@@ -59,6 +59,7 @@ say.speak = function(text, voice, speed, callback) {
 
     pipedData += '(SayText \"' + text + '\")';
   } else if (process.platform === 'win32') {
+    var path = require('path');
     commands = [ '/s /c "' + path.join(__dirname, 'say.vbs') + ' ' + JSON.stringify(text) + '"' ];
   } else {
     // if we don't support the platform, callback with an error (next tick) - don't continue
